@@ -7,6 +7,7 @@ import stripe
 import os
 
 from app.cosmos_client import (
+    create_parking_session,
     get_active_sessions,
     calculate_fee,
     create_payment_intent,
@@ -159,9 +160,3 @@ def update_me(
 
     except Exception as e:
         raise HTTPException(status_code=401, detail="Invalid token or update error")
-
-@app.post("/webhook/lpr")
-async def lpr_webhook(request: Request):
-    data = await request.body()
-    print("Empfangen:", data)
-    return {"status": "received"}
