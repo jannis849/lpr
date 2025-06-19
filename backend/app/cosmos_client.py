@@ -162,4 +162,4 @@ def find_user_by_email(email: str):
 
 def create_user(user_data: dict):
     container = get_container("users")
-    container.create_item(user_data)
+    container.upsert_item(user_data)
