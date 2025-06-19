@@ -162,4 +162,5 @@ def find_user_by_email(email: str):
 
 def create_user(user_data: dict):
     container = get_container("users")
-    container.create_item(user_data)
+    # Use upsert so we can update existing users without errors
+    container.upsert_item(user_data)
